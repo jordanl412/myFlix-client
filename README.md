@@ -10,7 +10,7 @@ This is the client facing side of the myFlix API app
  
 ## How To:
 In order to run or build this project, use Parcel (enter the command
-      "parcel src/index.jsx"
+      "parcel src/index.html"
 in your terminal).
 To globally download Parcel, enter the command
       "npm install -g parcel"
