@@ -11,22 +11,25 @@ export const MainView = () => {
 
     useEffect(() => {
         fetch("https://witty-boa-tights.cyclic.app/movies")
-     /*       .then((response) => response.json())
+            .then((response) => {
+                const moviesJson = response.json();
+                console.log(moviesJson);
+            })
             .then((data) => {
-                const moviesFromApi = data.docs.map((doc) => {
+                const moviesFromApi = data.map((movie) => {
                     return {
-                        id: doc._id,
-                        title: doc.Title,
-                        description: doc.Description,
-                        image: doc.ImagePath,
-                        director: doc.Director.Name,
-                        genre: doc.Genre.Name,
-                        featured: doc.Featured
+                        id: movie._id,
+                        title: movie.Title,
+                        description: movie.Description,
+                        image: movie.ImagePath,
+                        director: movie.Director.Name,
+                        genre: movie.Genre.Name,
+                        featured: movie.Featured
                     };
                 });
 
                 setMovies(moviesFromApi);
-            });*/
+            });
         }, []);
 
     if (selectedMovie) {
