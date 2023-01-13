@@ -1,6 +1,4 @@
-$color: steelblue;
+$primary: rgb(218, 132, 152);
+$body-bg: Honeydew;
 
-.my-flix {
-    color: $color;
-}
-
+@import '~bootstrap/scss/bootstrap.scss';
