@@ -1,3 +1,4 @@
+import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -6,7 +7,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    Books App
+                    myFlix App
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="baisc-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -25,6 +26,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                             <>
                                 <Nav.Link as={Link} to="/">
                                     Home
+                                </Nav.Link>
+                                <Nav.Link as={Link} to="/profile">
+                                    Profile
                                 </Nav.Link>
                                 <Nav.Link onClick={onLoggedOut}>
                                     Logout
