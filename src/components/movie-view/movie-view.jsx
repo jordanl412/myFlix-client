@@ -14,8 +14,10 @@ export const MovieView = ({ movies }) => {
 
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user"));
+    //console.log(storedUser);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [user, setUser] = useState(storedUser ? storedUser : null);
+    //const favoriteMovies = [];
 
     const handleFavorite = () => {
 
@@ -46,7 +48,7 @@ export const MovieView = ({ movies }) => {
                 alert("Removed from favorites");
                 const newUser = {
                     ...user,
-                    favoriteMovies: user.favoriteMovies.filter(movie => movie.id != movie.id)
+                    FavoriteMovies: user.FavoriteMovies.filter(movie => movie.id != movie.id)
                 }
                 updateUser(newUser);
             } else {
@@ -91,7 +93,7 @@ export const MovieView = ({ movies }) => {
                     </button>
                 </Link>
                 {
-                    storedUser.favoriteMovies.indexOf(movie.id) >= 0 ? (
+                    storedUser.FavoriteMovies.indexOf(movie.id) >= 0 ? (
                         <Button
                             variant="danger"
                             onClick={() => handleRemoveFavorite(movie.id, "add")}
