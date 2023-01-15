@@ -16,24 +16,30 @@ export const ProfileView = ({ movies }) => {
     const [birthday, setBirthday] = useState(user.Birthday);
 
     let favoriteMovies = movies && movies.filter(
-        (movie) => 
-            user.favoriteMovies && user.favoriteMovies.indexOf(movie.id) >= 0
+        (m) => 
+            user.favoriteMovies && user.favoriteMovies.indexOf(m.id) >= 0
     );
 
     const updateUser = (username) => {
-        fetch("https://witty-boa-tights.cyclic.app/users/" + username, {
+        return fetch("https://witty-boa-tights.cyclic.app/users/" + username, {
             headers: { Authorization: `Bearer ${token}` },
         })
-            .then((response) => {
-                return response.json();
-            })
+            .then((response) => response.json())
             .then((user) => {
                 if(user) {
                     setUser(user);
                     localStorage.setItem("user", JSON.stringify(user));
+                    window.location.reload();
                 }
+            })
+            .catch((error) => {
+                console.error('Error: ', error);
             });
     };
+
+    console.log(updateUser("jordanlazan1"));
+    console.log(user.Username);
+    console.log(user);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -52,14 +58,13 @@ export const ProfileView = ({ movies }) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then((response) => {
-            if (response.ok) {
-                alert("Changes saved");
-                return updateUser(user.Username)
-                .then(() => window.location.reload());
-            } else {
-                alert("Something went wrong");
-            }
+        }).then((response) => {return response.json()})
+        .then((result) => {
+            alert("Changes saved");
+            updateUser(user.Username);
+        })
+        .catch((error) => {
+            alert("Something went wrong");
         });
     };
 
