@@ -30,13 +30,11 @@ export const MovieView = ({ movies }) => {
         }).then((response) => {
             alert("Added to favorites");
             return response.json();
-        }).then((data) => {
-            updateUser(data);
-
-        })
+        }).then(data => updateUser(data))
         .catch(error => {
             alert("Something went wrong");
             console.log("Error: ", error);
+            return error;
         });
     };
 
@@ -48,28 +46,34 @@ export const MovieView = ({ movies }) => {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            alert("Removed from favorites");
-            return response.json();
-        }).then((data) => {
-            updateUser(data);
-        }).catch((error) => {
-            alert("Something went wrong");
-            console.log("Error: ", error);
-        });
-
-/*
             if (response.ok) {
                 alert("Removed from favorites");
                 const newUser = {
                     ...user,
-                    FavoriteMovies: user.FavoriteMovies.filter(movie => movie.id != movie.id)
+                    FavoriteMovies: user.FavoriteMovies.filter(movie => movie._id != movie._id)
                 }
-                updateUser(newUser);
+                return updateUser(newUser);
             } else {
-                alert("Something went wrong");
+            alert("Something went wrong");
+            console.log("Error: ", error);
+            return error;
             }
+        });
+
+/*
+            alert("Removed from favorites");
+            return response.json();
+        }).then((data) => {
+            return updateUser(data);
+        }).catch((error) => {
+            alert("Something went wrong");
+            console.log("Error: ", error);
+            return error;
         });*/
     };
+
+    //console.log(favoriteMovies);
+    //console.log(FavoriteMovies);
 
     const updateUser = (user) => {
         localStorage.setItem("user", JSON.stringify(user));

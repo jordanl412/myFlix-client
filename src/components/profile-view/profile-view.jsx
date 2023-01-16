@@ -124,7 +124,7 @@ export const ProfileView = ({ movies }) => {
                             Favorite Movies:
                         </span>
                         <span className="value">
-                            {favoriteMovies}
+                            {user.FavoriteMovies}
                         </span>
                     </div>
                 </div>
