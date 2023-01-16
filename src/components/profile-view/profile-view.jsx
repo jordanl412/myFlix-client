@@ -14,8 +14,8 @@ export const ProfileView = ({ movies }) => {
     const [password, setPassword] = useState();
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
-
-    let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id));
+    console.log(movies, user.FavoriteMovies);
+    let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
 
 
     const updateUser = (username) => {
@@ -97,7 +97,7 @@ export const ProfileView = ({ movies }) => {
                 <div className="profile-info">
                     <div className="user-info">
                         <span className="label">
-                            Username:  
+                            Username: &nbsp; 
                         </span>
                         <span className="value">
                             {user.Username}
@@ -105,7 +105,7 @@ export const ProfileView = ({ movies }) => {
                     </div>
                     <div className="user-info">
                         <span className="label">
-                            Email: 
+                            Email: &nbsp;
                         </span>
                         <span className="value">
                             {user.Email}
@@ -113,18 +113,10 @@ export const ProfileView = ({ movies }) => {
                     </div>
                     <div className="user-info">
                         <span className="label">
-                            Birthday: 
+                            Birthday: &nbsp;
                         </span>
                         <span className="value">
                             {user.Birthday}
-                        </span>
-                    </div>
-                    <div className="user-info">
-                        <span className="label">
-                            Favorite Movies:
-                        </span>
-                        <span className="value">
-                            {user.FavoriteMovies}
                         </span>
                     </div>
                 </div>
@@ -189,12 +181,13 @@ export const ProfileView = ({ movies }) => {
                 </Button>
             </Col>
             <Row>
-                {favoriteMovies.length > 0 &&
-                    favoriteMovies.map((movie) => (
-                        <Col className="mb-5" key={movie.id} sm={5} md={3}>
-                            <MovieCard movie={movie} />
-                        </Col>
-                    ))}
+                <h2>Favorite Movies</h2>
+                    {favoriteMovies.length > 0 &&
+                        favoriteMovies.map((movie) => (
+                            <Col className="mb-5" key={movie.id} sm={5} md={3}>
+                                <MovieCard movie={movie} />
+                            </Col>
+                        ))}
             </Row>
         </Row>
     );
