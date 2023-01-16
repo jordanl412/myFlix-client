@@ -19,7 +19,7 @@ export const MovieView = ({ movies }) => {
     const [user, setUser] = useState(storedUser ? storedUser : null);
     //const favoriteMovies = [];
 
-    const handleFavorite = () => {
+    const addFavorite = () => {
 
         fetch("https://witty-boa-tights.cyclic.app/users/" + user.Username + "/movies/" + movie.id, {
             method: "POST",
@@ -30,13 +30,17 @@ export const MovieView = ({ movies }) => {
         }).then((response) => {
             alert("Added to favorites");
             return response.json();
-        }).then(data => updateUser(data))
-        .catch(err => {
+        }).then((data) => {
+            updateUser(data);
+
+        })
+        .catch(error => {
             alert("Something went wrong");
+            console.log("Error: ", error);
         });
     };
 
-    const handleRemoveFavorite = () => {
+    const removeFavorite = () => {
         fetch("https://witty-boa-tights.cyclic.app/users/" + user.Username + "/movies/" + movie.id, {
             method: "DELETE",
             headers: {
@@ -44,6 +48,16 @@ export const MovieView = ({ movies }) => {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
+            alert("Removed from favorites");
+            return response.json();
+        }).then((data) => {
+            updateUser(data);
+        }).catch((error) => {
+            alert("Something went wrong");
+            console.log("Error: ", error);
+        });
+
+/*
             if (response.ok) {
                 alert("Removed from favorites");
                 const newUser = {
@@ -54,7 +68,7 @@ export const MovieView = ({ movies }) => {
             } else {
                 alert("Something went wrong");
             }
-        });
+        });*/
     };
 
     const updateUser = (user) => {
@@ -96,14 +110,14 @@ export const MovieView = ({ movies }) => {
                     storedUser.FavoriteMovies.indexOf(movie.id) >= 0 ? (
                         <Button
                             variant="danger"
-                            onClick={() => handleRemoveFavorite(movie.id, "add")}
+                            onClick={() => removeFavorite(movie.id, "add")}
                         >
                             Remove from Favorites
                         </Button>
                     ) : (
                         <Button
                             className="button-add-favorite"
-                            onClick={() => handleFavorite(movie.id, "add")}
+                            onClick={() => addFavorite(movie.id, "add")}
                         >
                             Add to Favorites
                         </Button>
