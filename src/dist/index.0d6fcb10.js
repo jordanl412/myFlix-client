@@ -46460,8 +46460,8 @@ const ProfileView = ({ movies  })=>{
             } else alert("Something went wrong");
         });
     };
-    console.log(favoriteMovies);
-    //console.log(FavoriteMovies);
+    //console.log(favoriteMovies);
+    console.log(user.FavoriteMovies);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {

@@ -88,8 +88,8 @@ export const ProfileView = ({ movies }) => {
         });
     };
 
-    console.log(favoriteMovies);
-    //console.log(FavoriteMovies);
+    //console.log(favoriteMovies);
+    console.log(user.FavoriteMovies);
 
     return (
         <Row>
