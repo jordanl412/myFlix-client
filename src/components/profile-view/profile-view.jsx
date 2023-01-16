@@ -15,10 +15,8 @@ export const ProfileView = ({ movies }) => {
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
-    let favoriteMovies = movies && movies.filter(
-        (m) => 
-            user.favoriteMovies && user.favoriteMovies.indexOf(m.id) >= 0
-    );
+    let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id));
+
 
     const updateUser = (username) => {
         return fetch("https://witty-boa-tights.cyclic.app/users/" + username, {
@@ -31,9 +29,11 @@ export const ProfileView = ({ movies }) => {
                     localStorage.setItem("user", JSON.stringify(user));
                     window.location.reload();
                 }
+                return username;
             })
             .catch((error) => {
                 console.error('Error: ', error);
+                return error;
             });
     };
 
@@ -58,13 +58,16 @@ export const ProfileView = ({ movies }) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then((response) => {return response.json()})
-        .then((result) => {
+        })
+        //.then((response) => response.json())
+        .then((response) => {
             alert("Changes saved");
             updateUser(user.Username);
+            console.log("Success: ", data);
         })
         .catch((error) => {
             alert("Something went wrong");
+            console.log("Error: ", error);
         });
     };
 
@@ -85,13 +88,16 @@ export const ProfileView = ({ movies }) => {
         });
     };
 
+    console.log(favoriteMovies);
+    //console.log(FavoriteMovies);
+
     return (
         <Row>
             <Col>
                 <div className="profile-info">
                     <div className="user-info">
                         <span className="label">
-                            Username: 
+                            Username:  
                         </span>
                         <span className="value">
                             {user.Username}
@@ -111,6 +117,14 @@ export const ProfileView = ({ movies }) => {
                         </span>
                         <span className="value">
                             {user.Birthday}
+                        </span>
+                    </div>
+                    <div className="user-info">
+                        <span className="label">
+                            Favorite Movies:
+                        </span>
+                        <span className="value">
+                            {favoriteMovies}
                         </span>
                     </div>
                 </div>
