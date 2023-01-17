@@ -48,6 +48,7 @@ export const MovieView = ({ movies }) => {
         }).then((response) => {
             if (response.ok) {
                 alert("Removed from favorites");
+                //return updateUser(user);
                 const newUser = {
                     ...user,
                     FavoriteMovies: user.FavoriteMovies.filter(movie => movie._id != movie._id)
