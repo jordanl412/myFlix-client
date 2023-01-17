@@ -7,6 +7,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { FilterMovies } from "../filter-movies/filter-movies";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -60,8 +61,12 @@ export const MainView = () => {
                     user={user}
                     onLoggedOut={() => {
                         setUser(null);
+                        setToken(null);
                     }}
                 />
+            <Row>
+                <FilterMovies />
+            </Row>
             <Row className="justify-content-md-center"> 
               <Routes>
                 <Route
