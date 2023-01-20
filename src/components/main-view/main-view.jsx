@@ -64,9 +64,6 @@ export const MainView = () => {
                         setToken(null);
                     }}
                 />
-            <Row>
-                <FilterMovies />
-            </Row>
             <Row className="justify-content-md-center"> 
               <Routes>
                 <Route
@@ -123,6 +120,10 @@ export const MainView = () => {
                                 <Col>The list is empty!</Col>
                             ) : (
                                 <>
+                                <Col>
+                                    <FilterMovies />
+                                </Col>
+
                                     {movies.map((movie) => (
                                         <Col className="mb-4" key={movie.id} md={3}>
                                             <MovieCard movie={movie} />
@@ -154,3 +155,4 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
+
