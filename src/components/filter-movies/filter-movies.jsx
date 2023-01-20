@@ -29,7 +29,7 @@ export const FilterMovies = ({movies}) => {
                                         key={id}
                                         action
                                         active={selectedFilterOption === fKey}
-                                        onclick={() => setSelectedFilterOption(fKey)}
+                                        onClick={() => setSelectedFilterOption(fKey)}
                                         variant="success"
                                     >
                                         {fKey}
@@ -57,6 +57,7 @@ export const FilterMovies = ({movies}) => {
         </Dropdown>
     );
 };
+
 
                 /*<Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Drama</Dropdown.Item>
