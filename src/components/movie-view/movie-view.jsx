@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { favoriteMovies } from '../profile-view/profile-view';
 
 import "./movie-view.scss";
 import { Button, Row, Col } from 'react-bootstrap';
@@ -38,6 +39,8 @@ export const MovieView = ({ movies }) => {
         });
     };
 
+    //console.log(FavoriteMovies);
+
     const removeFavorite = () => {
         fetch("https://witty-boa-tights.cyclic.app/users/" + user.Username + "/movies/" + movie.id, {
             method: "DELETE",
@@ -51,7 +54,7 @@ export const MovieView = ({ movies }) => {
                 //return updateUser(user);
                 const newUser = {
                     ...user,
-                    FavoriteMovies: user.FavoriteMovies.filter(movie => movie._id != movie._id)
+                    FavoriteMovies: user.FavoriteMovies.filter(movie => movie != movieId)
                 }
                 return updateUser(newUser);
             } else {
