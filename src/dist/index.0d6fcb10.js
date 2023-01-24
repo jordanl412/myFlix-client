@@ -42935,7 +42935,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-router":"btA8E","react-router-dom":"fdOAw","./movie-view.scss":"jnlR5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../profile-view/profile-view":"2vVqf"}],"jnlR5":[function() {},{}],"2vVqf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-router":"btA8E","react-router-dom":"fdOAw","../profile-view/profile-view":"2vVqf","./movie-view.scss":"jnlR5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43304,7 +43304,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9YtA0":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43771,20 +43771,10 @@ const FilterMovies = ({ movies  })=>{
             "Romantic Comedy",
             "Romantic Drama",
             "Science Fiction"
-        ],
-        Director: [
-            "Damien Chazelle",
-            "Anothony Russo & Joe Russo",
-            "Paul Feig",
-            "Neil Burger",
-            "Thea Sharrock",
-            "Christopher Nolan",
-            "Steven Antin",
-            "Nick Cassavetes",
-            "John Requa"
         ]
     };
     const [selectedFilterOption, setSelectedFilterOption] = (0, _react.useState)(Object.keys(filterMenuOptions)[0]);
+    const onGenreChange;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown).Toggle, {
@@ -43792,7 +43782,7 @@ const FilterMovies = ({ movies  })=>{
                 children: "Filter By:"
             }, void 0, false, {
                 fileName: "src/components/filter-movies/filter-movies.jsx",
-                lineNumber: 19,
+                lineNumber: 22,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown).Menu, {
@@ -43813,17 +43803,17 @@ const FilterMovies = ({ movies  })=>{
                                             children: fKey
                                         }, id, false, {
                                             fileName: "src/components/filter-movies/filter-movies.jsx",
-                                            lineNumber: 28,
+                                            lineNumber: 31,
                                             columnNumber: 37
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/filter-movies/filter-movies.jsx",
-                                    lineNumber: 26,
+                                    lineNumber: 29,
                                     columnNumber: 29
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/filter-movies/filter-movies.jsx",
-                                lineNumber: 25,
+                                lineNumber: 28,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43836,19 +43826,6 @@ const FilterMovies = ({ movies  })=>{
                                                         type: "checkbox"
                                                     }, void 0, false, {
                                                         fileName: "src/components/filter-movies/filter-movies.jsx",
-                                                        lineNumber: 45,
-                                                        columnNumber: 45
-                                                    }, undefined)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/filter-movies/filter-movies.jsx",
-                                                    lineNumber: 44,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                        children: option
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/filter-movies/filter-movies.jsx",
                                                         lineNumber: 48,
                                                         columnNumber: 45
                                                     }, undefined)
@@ -43856,43 +43833,56 @@ const FilterMovies = ({ movies  })=>{
                                                     fileName: "src/components/filter-movies/filter-movies.jsx",
                                                     lineNumber: 47,
                                                     columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                        children: option
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/filter-movies/filter-movies.jsx",
+                                                        lineNumber: 51,
+                                                        columnNumber: 45
+                                                    }, undefined)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/filter-movies/filter-movies.jsx",
+                                                    lineNumber: 50,
+                                                    columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, id, true, {
                                             fileName: "src/components/filter-movies/filter-movies.jsx",
-                                            lineNumber: 43,
+                                            lineNumber: 46,
                                             columnNumber: 37
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/filter-movies/filter-movies.jsx",
-                                    lineNumber: 41,
+                                    lineNumber: 44,
                                     columnNumber: 29
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/filter-movies/filter-movies.jsx",
-                                lineNumber: 40,
+                                lineNumber: 43,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/filter-movies/filter-movies.jsx",
-                        lineNumber: 24,
+                        lineNumber: 27,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/filter-movies/filter-movies.jsx",
-                    lineNumber: 23,
+                    lineNumber: 26,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/filter-movies/filter-movies.jsx",
-                lineNumber: 22,
+                lineNumber: 25,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/filter-movies/filter-movies.jsx",
-        lineNumber: 18,
+        lineNumber: 21,
         columnNumber: 9
     }, undefined);
 }; /*<Dropdown.Item>Action</Dropdown.Item>

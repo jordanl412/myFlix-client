@@ -5,15 +5,18 @@ import { Col, Container, Dropdown, ListGroup, Row } from "react-bootstrap";
 export const FilterMovies = ({movies}) => {
     const filterMenuOptions = {
         Genre: ["Action", "Drama", "Dystopian", "Musical Drama", 
-        "Romantic Comedy", "Romantic Drama", "Science Fiction"],
-        Director: ["Damien Chazelle", "Anothony Russo & Joe Russo", "Paul Feig", 
-        "Neil Burger", "Thea Sharrock", "Christopher Nolan", "Steven Antin", 
-        "Nick Cassavetes", "John Requa"]
+        "Romantic Comedy", "Romantic Drama", "Science Fiction"]
     };
 
     const [selectedFilterOption, setSelectedFilterOption] = useState(
         Object.keys(filterMenuOptions)[0]
     );
+
+    const onGenreChange() => {
+        let selectedGenre = selectedFilterOption
+        let filteredMovies = movies.filter(movie => movie.genre === selectedGenre)
+    };
+    
     return (
         <Dropdown>
             <Dropdown.Toggle className="menu-dropdown button-primary">
