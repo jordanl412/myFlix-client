@@ -12,10 +12,10 @@ export const FilterMovies = ({movies}) => {
         Object.keys(filterMenuOptions)[0]
     );
 
-    const onGenreChange() => {
+    /*const onGenreChange() => {
         let selectedGenre = selectedFilterOption
         let filteredMovies = movies.filter(movie => movie.genre === selectedGenre)
-    };
+    };*/
     
     return (
         <Dropdown>
