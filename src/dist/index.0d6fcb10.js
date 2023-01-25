@@ -43774,10 +43774,8 @@ const FilterMovies = ({ movies  })=>{
         ]
     };
     const [selectedFilterOption, setSelectedFilterOption] = (0, _react.useState)(Object.keys(filterMenuOptions)[0]);
-    /*const onGenreChange() => {
-        let selectedGenre = selectedFilterOption
-        let filteredMovies = movies.filter(movie => movie.genre === selectedGenre)
-    };*/ return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown), {
+    const onGenreChange;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Dropdown).Toggle, {
                 className: "menu-dropdown button-primary",
@@ -43825,9 +43823,7 @@ const FilterMovies = ({ movies  })=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                                     xs: "2",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        value: selectedFilterOption,
-                                                        type: "checkbox",
-                                                        onChange: (e)=>setSelectedFilterOption
+                                                        type: "checkbox"
                                                     }, void 0, false, {
                                                         fileName: "src/components/filter-movies/filter-movies.jsx",
                                                         lineNumber: 48,
