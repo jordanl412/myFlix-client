@@ -9,7 +9,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Navbar.Brand as={Link} to="/">
                     myFlix App
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="baisc-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         {!user && (
