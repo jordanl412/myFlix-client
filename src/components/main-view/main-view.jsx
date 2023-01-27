@@ -7,7 +7,6 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { FilterMovies } from "../filter-movies/filter-movies";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -22,6 +21,8 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [searchInput, setSearchInput] = useState("");
+    const [filterCriteria, setFilterCriteria] = useState("title");
 
     useEffect(() => {
         if (!token) {
@@ -55,6 +56,26 @@ export const MainView = () => {
              });
         }, [token]);
 
+        const handleSearchInput = (e) => {
+            setSearchInput(e.target.value);
+        };
+
+        const handleFilterSelection = (e) => {
+            setFilterCriteria(e.target.value);
+        };
+
+        const filteredMovies = movies.filter((movie) => {
+            if (filterCriteria === "title") {
+                return movie.title.toLowerCase().includes(searchInput.toLowerCase());
+            }
+            if(filterCriteria === "genre") {
+                return movie.genre.toLowerCase().includes(searchInput.toLowerCase());
+            }
+            if(filterCriteria === "director") {
+                return movie.director.toLowerCase().includes(searchInput.toLowerCase());
+            }
+        });
+
         return (
             <BrowserRouter>
                 <NavigationBar
@@ -62,7 +83,11 @@ export const MainView = () => {
                     onLoggedOut={() => {
                         setUser(null);
                         setToken(null);
+                        setSearchInput("");
+                        setFilterCriteria("title");
                     }}
+                    handleSearchInput={(e) => setSearchInput(e.target.value)}
+                    handleFilterSelection={(e) => setFilterCriteria(e.target.value)}
                 />
             <Row className="justify-content-md-center"> 
               <Routes>
@@ -120,11 +145,7 @@ export const MainView = () => {
                                 <Col>The list is empty!</Col>
                             ) : (
                                 <>
-                                <Col>
-                                    <FilterMovies />
-                                </Col>
-
-                                    {movies.map((movie) => (
+                                    {filteredMovies.map((movie) => (
                                         <Col className="mb-4" key={movie.id} md={3}>
                                             <MovieCard movie={movie} />
                                         </Col>
