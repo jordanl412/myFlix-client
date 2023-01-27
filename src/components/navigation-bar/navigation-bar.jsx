@@ -1,8 +1,8 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, handleSearchInput, handleFilterSelection }) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -36,6 +36,25 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                             </>
                         )}
                     </Nav>
+                        {user && (
+                            <Form inline className="d-flex">
+                                <FormControl
+                                    type="text"
+                                    placeholder="Search"
+                                    className="mr-sm-2 mx-2"
+                                    onChange={handleSearchInput}
+                                />
+                                <FormControl
+                                    as="select"
+                                    onChange={handleFilterSelection}
+                                    className="mx-2"
+                                >
+                                    <option value="title">Title</option>
+                                    <option value="genre">Genre</option>
+                                    <option value="director">Director</option>
+                                </FormControl>
+                            </Form>
+                        )}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
