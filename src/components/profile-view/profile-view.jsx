@@ -18,6 +18,11 @@ export const ProfileView = ({ movies }) => {
     let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
 
 
+    function formatDate(date) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+        return new Date(date).toLocaleDateString('en-EN', options);
+    }
+
     const updateUser = (username) => {
         return fetch("https://witty-boa-tights.cyclic.app/users/" + username, {
             headers: { Authorization: `Bearer ${token}` },
@@ -116,7 +121,7 @@ export const ProfileView = ({ movies }) => {
                             Birthday: &nbsp;
                         </span>
                         <span className="value">
-                            {user.Birthday}
+                            {formatDate(user.Birthday)}
                         </span>
                     </div>
                 </div>
